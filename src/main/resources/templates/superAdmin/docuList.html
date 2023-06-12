@@ -1,0 +1,35 @@
+<div class="section list">
+    <table>
+        <th:block th:if="${docuItem}">
+            <colgroup>
+                <col style="width: 5%"/>
+                <col style="width: 15%"/>
+                <col style="width: 50%"/>
+                <col style="width: 10%"/>
+                <col style="width: 10%"/>
+                <col style="width: 10%"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>내용</th>
+                    <th>등록일</th>
+                    <th>유저레벨</th>
+                    <th>관리</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+              <tr th:each="item : ${docuItem}">
+                  <td th:text="${item.bdSeq}"></td>
+                  <td><a th:text="${item.bdTitle}" th:href="@{/detail(bdSeq = ${item.bdSeq})}"></a></td>
+                  <td th:text="${item.bdContent}"></td>
+                  <td th:text="${item.bdUpdateAt}"></td>
+                  <td th:text="${item.mbLevel}"></td>
+                  <td> <a th:href="@{/bdremove/{bdSeq}(bdSeq = ${item.bdSeq})}"><button>삭제</button></a> </td>
+              </tr>
+	        </th:block>    
+        </tbody>
+    </table>
+</div>
